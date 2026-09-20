@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MarketHub | Your Trusted Marketplace</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  
+ <!-- // navbar // -->
+     <header>
+        <nav class="navbar">
+
+            <h1 class="logo">Market<span>Hub</span></h1>
+
+            <ul class="nav-links" id="nav-link">
+                <li><a href="#">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <button class="menu-btn" id="menu-btn">☰</button>
+
+        </nav>
+    </header>
+
+
+    <main>
+
+    <!-- //hero section // -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="hero-small-text">WELCOME TO MARKETHUB</p>
+
+                <h2>
+                    Shop With Confidence.
+                    <span>Shop With Trust.</span>
+                </h2>
+
+                <p>
+                    Discover quality products from trusted vendors
+                    and enjoy a simple and secure shopping experience.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#products" class="primary-btn">
+                        Shop Now
+                    </a>
+
+                    <a href="#categories" class="secondary-btn">
+                        Explore Categories
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="categories" id="categories">
+
+            <div class="section-heading">
+                <p>EXPLORE</p>
+                <h2>Shop By Category</h2>
+            </div>
+
+            <div class="category-grid">
+
+                <div class="category-card">
+                    <div class="category-icon">👕</div>
+                    <h3>Fashion</h3>
+                    <p>Discover the latest styles.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h3>Electronics</h3>
+                    <p>Phones, gadgets and more.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">💄</div>
+                    <h3>Beauty</h3>
+                    <p>Products for your lifestyle.</p>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🏠</div>
+                    <h3>Home</h3>
+                    <p>Everything for your home.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="products-section" id="products">
+
+            <div class="section-heading">
+                <p>SHOP NOW</p>
+                <h2>Featured Products</h2>
+            </div>
+
+
+            <div class="product-grid">
+
+                <!-- Product 1 -->
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <img
+                            src="https://placehold.co/600x500"
+                            alt="Classic Sneakers"
+                        >
+
+                        <span class="product-tag">
+                            New
+                        </span>
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Fashion
+                        </p>
+
+                        <h3>Classic Sneakers</h3>
+
+                        <p class="product-description">
+                            Comfortable sneakers for everyday use.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <strong>₦45,000</strong>
+
+                            <button class="cart-btn" onclick="addToCart()">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <img
+                            src="https://placehold.co/600x500"
+                            alt="Smart Watch"
+                        >
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Electronics
+                        </p>
+
+                        <h3>Smart Watch</h3>
+
+                        <p class="product-description">
+                            Stay connected wherever you go.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <strong>₦65,000</strong>
+
+                            <button class="cart-btn" onclick="addToCart()">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <img
+                            src="https://placehold.co/600x500"
+                            alt="Leather Bag"
+                        >
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Fashion
+                        </p>
+
+                        <h3>Leather Bag</h3>
+
+                        <p class="product-description">
+                            Premium leather bag for everyday use.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <strong>₦30,000</strong>
+
+                            <button class="cart-btn" onclick="addToCart()">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image">
+                        <img
+                            src="https://placehold.co/600x500"
+                            alt="Wireless Headphones"
+                        >
+                    </div>
+
+                    <div class="product-info">
+
+                        <p class="product-category">
+                            Electronics
+                        </p>
+
+                        <h3>Wireless Headphones</h3>
+
+                        <p class="product-description">
+                            Enjoy high-quality sound anywhere.
+                        </p>
+
+                        <div class="product-bottom">
+
+                            <strong>₦55,000</strong>
+
+                            <button class="cart-btn" onclick="addToCart()">
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <section class="trust-section">
+
+            <div class="trust-content">
+
+                <p class="hero-small-text">WHY MARKETHUB?</p>
+
+                <h2>
+                    A Better Way To Shop Online
+                </h2>
+
+                <p>
+                    We connect buyers with trusted vendors and make
+                    online shopping simple, convenient and reliable.
+                </p>
+
+                <div class="trust-items">
+
+                    <div>
+                        <strong>✓</strong>
+                        <span>Trusted Vendors</span>
+                    </div>
+
+                    <div>
+                        <strong>✓</strong>
+                        <span>Secure Shopping</span>
+                    </div>
+
+                    <div>
+                        <strong>✓</strong>
+                        <span>Fast Delivery</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer id="contact">
+
+        <div class="footer-content">
+
+            <div>
+                <h2 class="logo">
+                    Market<span>Hub</span>
+                </h2>
+
+                <p>
+                    Your trusted online marketplace.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+
+                <a href="#">Home</a>
+                <a href="#products">Products</a>
+                <a href="#categories">Categories</a>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+
+                <p>hello@markethub.com</p>
+                <p>Lagos, Nigeria</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; 2026 MarketHub. All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+
+</html>
