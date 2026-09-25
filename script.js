@@ -1,157 +1,147 @@
-console.log("Script loaded successfully!");
+// menu button toggle
+let menuBtn = document.getElementById("menu-btn");
 
+// nav menu toggle
+let navMenu = document.getElementById("nav-link");
 
-// variable declaration
-let productsName = "classic snaeakers";
-let price = 45000;
-
-
-
-console.log(productsName);
-console.log(price);
-
-console.log("product:", productsName);
-console.log("price:", price);
-
-let customerName = "John";
-let cartsItems = 3; 
-let isLoggedIn = true;
-
-let score = 10; 
-score = 15;
-
-const taxRate = 0.15; 
-// taxRate = 0.18; // This will throw an error because taxRate is a constant
-
-// if statement
-let total = 60000;
-if (total >= 50000) {
-    console.log("You are eligible for free shipping!");
-} else {
-    console.log("You are not eligible for free shipping.");
-}
-
-let age = 20; 
-if (age >= 18) {
-    console.log("you are eligible to enter the club");
-} else {
-    console.log("you are not eligible to enter the club");
-}
-
-let totalCart = 15000;
-let isPremiumMember = true;
-
-if (totalCart >= 20000 || isPremiumMember) {
-    console.log("You are eligible for free shipping!");
+if (menuBtn && navMenu) {
+    menuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+    });
 }
 
 
+// cart variables
+let cartCount = 0;
+let cartTotal = 0;
 
-// fuction to add product to cart
-
-
-
-function addNumbers(a,b) {
- return a + b; 
-}
-
-let result = addNumbers(10, 20);
-console.log(result);
+let cartCountElement = document.getElementById("cart-count");
 
 
+// product array
+let products = [
+    {
+        id: 1,
+        name: "Classic Sneakers",
+        category: "Fashion",
+        price: 45000
+    },
 
-function addToCart(name) {
-    alert("Product added to cart: " + name);
-}
+    {
+        id: 2,
+        name: "Smart Watch",
+        category: "Electronics",
+        price: 65000
+    },
 
-addToCart("classic sneakers");
+    {
+        id: 3,
+        name: "Leather Bag",
+        category: "Fashion",
+        price: 30000
+    },
 
-function sayHello() {
-    alert("Hello, welcome to our store!");
-
-}
-
-sayHello();
-
-function addNumbers(a, b) {
-    return a + b;
-}
-
-let results = addNumbers(10, 20);
-console.log(results);
-
+    {
+        id: 4,
+        name: "Wireless Headphones",
+        category: "Electronics",
+        price: 55000
+    }
+];
 
 
-function multiplyNumbers(a, b) {
-    return a * b;
-}
+// add product to cart
+function addToCart(productId) {
 
-const multiplyNumbersArrow = (a, b) => a * b;
+    if (productId === undefined) {
+        productId = 1;
+    }
 
-console.log(multiplyNumbersArrow(5, 10));
+    let product = products.find(function (item) {
+        return item.id === productId;
+    });
 
-let cartCount = 0; 
+    // if the product doesn't exist
+    if (!product) {
+        console.log("Product not found");
+        return;
+    }
 
-function addToCart() {
+    // increase cart count
     cartCount++;
 
-    document.getElementById("cart-count").textContent = cartCount;
-}
+    // add product price to cart total
+    cartTotal = cartTotal + product.price;
 
-let menuBtn = document.getElementById("nav-link");
-let navLinks = document.querySelector("nav ul");
+    // update cart
+    updateCart();
 
-let navMenu = document.querySelector("nav-links");
+    // save cart
+    saveCart();
 
-menuBtn.addEventListener("click", function() {
-    navMenu.classList.toggle("active");
-});
+    alert(product.name + " has been added");
 
-
-
-// javascript array
-let carts = [];
-carts.push("classic sneakers");
-carts.pop();
-carts.unshift("product1");
-car
-carts.push("smart watch");
-carts.push("product3");
-console.log(carts);
-console.log(carts.length);
-
-let products = {
-    name: "classic sneakers",
-    price: 45000, 
-    category: "shoes"
-}; 
-console.log(products.name);
-console.log(products.price);
-console.log(products.category);
-
-
-{
-    id: 1, 
-    name: "classic sneakers",
-    price: 45000, 
-    category: "shoes"
-    img: "images/product1.jpg"
+    console.log("Product added:", product.name);
+    console.log("Cart items:", cartCount);
+    console.log("Cart total:", cartTotal);
 }
 
 
-echo "# markethub" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/trenz999/markethub.git
-git push -u origin main
+// update cart
+function updateCart() {
+
+    if (!cartCountElement) {
+        return;
+    }
+
+    cartCountElement.textContent = cartCount;
+}
 
 
+// view cart
+function viewCart() {
+
+    if (cartCount === 0) {
+        alert("Your cart is empty.");
+        return;
+    }
+
+    alert(
+        "You have " +
+        cartCount +
+        " item(s) in the cart.\n\n" +
+        "Total: ₦" +
+        cartTotal.toLocaleString()
+    );
+}
 
 
-let fruits = [
-    "apple", "banana", "orange", "grape", "mango"
-]
+// clear cart
+function clearCart() {
 
-console.log(fruits.length); 
+    cartCount = 0;
+    cartTotal = 0;
+
+    updateCart();
+    saveCart();
+
+    alert("Your cart has been cleared.");
+}
+
+
+// save cart to local storage
+function saveCart() {
+
+    localStorage.setItem(
+        "cartCount",
+        cartCount
+    );
+
+    localStorage.setItem(
+        "cartTotal",
+        cartTotal
+    );
+
+    console.log("Cart Saved.");
+}
+
