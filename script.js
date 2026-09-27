@@ -115,6 +115,37 @@ function viewCart() {
     );
 }
 
+//connect cart link to javascript 
+let cartLink = document.querySelector(".nav-links a [href="cart"]);
+    if (cartLink) {
+        cartLink.addEventListener("click", function(event){
+            event.preventDefault();
+
+            //open cart 
+            viewCart();
+        }
+    )
+    }
+
+    //checkout
+    function checkout() {
+        if (checkout === 0) {
+            alert(
+                "your cart empty. Add a product to cart."
+            );
+            return;
+        }
+        alert(
+            "checkout\n\n" + 
+            "Items: " +
+            cartCount +
+
+            "\nTotal: #" +
+            cartTotal.toLocaleString()
+        )
+    }
+
+
 
 // clear cart
 function clearCart() {
@@ -144,4 +175,137 @@ function saveCart() {
 
     console.log("Cart Saved.");
 }
+
+//load cart from local storage
+function loadCart() {
+
+
+    let savedCartCount = localStorage.getItem("cartCount");
+
+    let savedCartTotal = localStorage.getItem("cartTotal"); 
+
+    if (savedCartCount !== null){
+        cartCount = Number(savedCartCount);
+    }
+
+    if (savedCartTotal !== null) {
+        cartTotal = Number(savedCartTotal);
+    }
+
+    updateCart(); 
+
+    console.log("cart loaded:", 
+        cartCount
+    );
+}
+
+//category card
+let categoryCards = document.querySelectorAll(".category-card");
+
+categoryCards.forEach(function(card) {
+    let categoryName = card.querySelector("h3").textContent;
+
+    console.log(
+        "selected category:",
+        categoryName
+    );
+
+    alert(
+        "you selected " +
+        categoryName
+    );
+});
+
+//product cards 
+let productCards = document.querySelectorAll(".product-card");
+
+productCards.forEach(function(card, index) {
+    let button = card.querySelector(".cart-btn");
+
+    if (button) {
+        button.removeAttribute("onclick");
+
+        button.addEventListener("click", function(){
+            let productId = index + 1;
+
+            addToCart(productId);
+        });
+    }
+});
+
+//product info 
+productCards.forEach(function (card) {
+    let productName = card.querySelector("h3").textContent;
+
+    let productPrice = card.querySelector(strong).textContent;
+
+    console.log(
+        productName + 
+        " - " +
+        productPrice
+    );
+});
+
+let navLinks = document.querySelectorAll(".nav-links a");
+
+navLinks.forEach(function (link) {
+    link.addEventListener("click", function() {
+        navMenu.classList.remove("active")
+    });
+});
+
+//scorll products
+let shopNowButton = document.querySelector(".primary-btn");
+
+if (shopNowButton) {
+    shopNowButton.addEventListener(
+        "click", 
+        function() {
+            console.log("customer click Shop Now");
+        }
+    );
+}
+
+
+console.log("welcome to MarketHub");
+
+loadCart()
+
+//delievery message
+function checkDelivery() {
+    if (cartTotal >= 50000) {
+        console.log(
+            "you qualify for FREE DELIVERY!"
+        ); 
+    } else {
+        console.log( 
+    "delivery fee applies"
+);
+    }
+}
+
+function updateCart() {
+    if (cartCountElement) {
+        cartCountElement.textContent = cartCount;
+    }
+
+    checkDelivery();
+}
+
+
+//keyboard event
+document.addEventListener(
+    "keydown", function(event) {
+        if (event.key === "Espace"){
+            navMenu.classList.remove("active");
+        }
+    }
+
+);
+
+
+
+
+
+
 
